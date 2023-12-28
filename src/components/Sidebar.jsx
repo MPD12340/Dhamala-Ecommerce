@@ -1,19 +1,22 @@
 import React from 'react'
-import Nav from './Nav';
-import { AiOutlineCloseSquare } from "react-icons/ai";
-import { useGlobalContext } from "../context/UserContext";
+import { FaRegWindowClose } from "react-icons/fa";
+import { urls } from '../utils/Links';
+import { NavLink } from 'react-router-dom';
+import { FiShoppingCart } from "react-icons/fi";
 
 
-const Sidebar = () => {
-    const {setShowSidebar} = useGlobalContext()
+const Sidebar = ({openSidebar , setOpenSidebar}) => {
   return (
-    
-     <div className='sidebar'>
-        <Nav />
-        <AiOutlineCloseSquare className='close-btn' onClick={()=>setShowSidebar(false)} />
-     </div>
-
-  );
+   <div className={` ${openSidebar ? 'sidebar open' : 'sidebar'}`}>
+    <ul className='flex flex-col items-center gap-y-6 text-xl py-4'>
+    {urls.map((url , index)=>(
+<li key={index}><NavLink to={url.path} onClick={()=>setOpenSidebar(false)}>{url.name}</NavLink></li>
+    ))}
+    <li className='relative'><NavLink to="/cart" onClick={()=>setOpenSidebar(false)}><FiShoppingCart className="text-[1.45rem]" /><span className='absolute top-[-0.65rem] left-2 text-[1rem] rounded-xl px-1 bg-purple-600 text-[#fff]'>10</span></NavLink></li>
+    </ul>
+    <button className='text-xl fixed top-2 right-4' onClick={()=>setOpenSidebar(false)}><FaRegWindowClose /></button>
+    </div>
+  )
 }
 
 export default Sidebar

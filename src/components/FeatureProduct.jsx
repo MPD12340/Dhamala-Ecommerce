@@ -1,27 +1,13 @@
-import Product from './Product'
-import { useGlobalContext } from '../context/UserContext'
-
+import React from 'react'
+import { customContextProvider } from '../context/ProductContext'
 
 const FeatureProduct = () => {
-const {isLoading , featureProducts} = useGlobalContext()
-
-if(isLoading){
-    return <div>.....LOading</div>
-}
-
+  const name = customContextProvider()
   return (
-    <>
-      <section className="feature-section">
-        <div className="feature-intro">
-          <p>Check now !</p>
-          <h2>Our latest products</h2>
-        </div>
-        <div className='feature-products'>
-            {featureProducts.map((item)=><Product key={item.id} elem = {item} />)}
-        </div>
-      </section>
-    </>
-  );
+    <div className='mt-5 px-4'>
+    <h1 className='text-2xl font-semibold text-center'>Our Products : {name}</h1>
+    </div>
+  )
 }
 
 export default FeatureProduct

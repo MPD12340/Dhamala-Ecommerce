@@ -1,10 +1,8 @@
-const FormatPrice = ({price}) => {
-  return ( Intl.NumberFormat('en-NP',{
-    style :'currency',
-    currency : 'NPR',
-    maximumFractionDigits : 2,
-  }
-  ).format(price/100)
+import React from 'react'
+
+const FormatPrice = () => {
+  return (
+    <div>FormatPrice</div>
   )
 }
 

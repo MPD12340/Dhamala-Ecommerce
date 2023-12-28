@@ -1,1 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+body{
+    font-family: monospace;
+    overflow-x: hidden;
+}
+
+.sidebar {
+display: block;
+height: 100vh;
+width: 50vw;
+background-color: rgb(103, 103, 255);
+position: fixed;
+top: 0;
+left: 0;
+transform: translateX(-101%);
+transition: transform 0.3s ease-in-out;
+}
+.sidebar.open{
+    transform: translateX(0);
+}
+
+@media (min-width: 768px) {
+    .sidebar{
+        display: none;
+    }
+}
